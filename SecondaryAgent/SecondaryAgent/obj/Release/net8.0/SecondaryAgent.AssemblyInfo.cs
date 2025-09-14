@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecondaryAgent")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1104e765c7078f31d51f1bc1946ef9366af90393")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b557a36291f32507dbee8f85e2103b9e42763ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecondaryAgent")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecondaryAgent")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

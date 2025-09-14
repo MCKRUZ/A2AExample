@@ -23,7 +23,13 @@
       "WebFetch(domain:aka.ms)",
       "Bash(move \".m365agentsplayground.yml\" \".m365agentsplayground.yml.backup\")",
       "Bash(taskkill:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(mcp list:*)",
+      "Bash(dotnet search:*)",
+      "Bash(dotnet add package:*)",
+      "mcp__context7__resolve-library-id",
+      "Bash(del PrimeAgentBot.cs)"
     ],
     "deny": [],
     "ask": []
