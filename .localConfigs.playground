@@ -1,0 +1,20 @@
+{
+  "runtime": {
+    "nodeVersion": "18.x",
+    "dotnetVersion": "8.0"
+  },
+  "agents": {
+    "PrimeAgent": {
+      "endpoint": "http://localhost:3978/api/messages",
+      "port": 3978,
+      "name": "PrimeAgent",
+      "description": "Primary agent that provides code assistance and forwards messages to SecondaryAgent"
+    },
+    "SecondaryAgent": {
+      "endpoint": "http://localhost:3979/api/messages", 
+      "port": 3979,
+      "name": "SecondaryAgent",
+      "description": "Secondary agent that specializes in code analysis and provides detailed insights"
+    }
+  }
+}

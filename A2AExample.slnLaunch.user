@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "PrimeAgent\\PrimeAgent\\PrimeAgent.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SecondaryAgent\\SecondaryAgent\\SecondaryAgent.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

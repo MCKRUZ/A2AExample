@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kruz7\\OneDrive\\Documents\\Code Repos\\MCKRUZ\\A2AExample\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{81DCBA3C-CC03-4305-ABFF-B61F36925295}|PrimeAgent\\PrimeAgent\\PrimeAgent.csproj|c:\\users\\kruz7\\onedrive\\documents\\code repos\\mckruz\\a2aexample\\primeagent\\primeagent\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{81DCBA3C-CC03-4305-ABFF-B61F36925295}|PrimeAgent\\PrimeAgent\\PrimeAgent.csproj|solutionrelative:primeagent\\primeagent\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD89C538-BF91-4ABD-8E90-49D23D565D1D}|SecondaryAgent\\SecondaryAgent\\SecondaryAgent.csproj|c:\\users\\kruz7\\onedrive\\documents\\code repos\\mckruz\\a2aexample\\secondaryagent\\secondaryagent\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DD89C538-BF91-4ABD-8E90-49D23D565D1D}|SecondaryAgent\\SecondaryAgent\\SecondaryAgent.csproj|solutionrelative:secondaryagent\\secondaryagent\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81DCBA3C-CC03-4305-ABFF-B61F36925295}|PrimeAgent\\PrimeAgent\\PrimeAgent.csproj|c:\\users\\kruz7\\onedrive\\documents\\code repos\\mckruz\\a2aexample\\primeagent\\primeagent\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{81DCBA3C-CC03-4305-ABFF-B61F36925295}|PrimeAgent\\PrimeAgent\\PrimeAgent.csproj|solutionrelative:primeagent\\primeagent\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\kruz7\\OneDrive\\Documents\\Code Repos\\MCKRUZ\\A2AExample\\PrimeAgent\\PrimeAgent\\appsettings.json",
+              "RelativeDocumentMoniker": "PrimeAgent\\PrimeAgent\\appsettings.json",
+              "ToolTip": "C:\\Users\\kruz7\\OneDrive\\Documents\\Code Repos\\MCKRUZ\\A2AExample\\PrimeAgent\\PrimeAgent\\appsettings.json",
+              "RelativeToolTip": "PrimeAgent\\PrimeAgent\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-14T18:52:56.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\kruz7\\OneDrive\\Documents\\Code Repos\\MCKRUZ\\A2AExample\\SecondaryAgent\\SecondaryAgent\\appsettings.json",
+              "RelativeDocumentMoniker": "SecondaryAgent\\SecondaryAgent\\appsettings.json",
+              "ToolTip": "C:\\Users\\kruz7\\OneDrive\\Documents\\Code Repos\\MCKRUZ\\A2AExample\\SecondaryAgent\\SecondaryAgent\\appsettings.json",
+              "RelativeToolTip": "SecondaryAgent\\SecondaryAgent\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-14T18:52:50.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\kruz7\\OneDrive\\Documents\\Code Repos\\MCKRUZ\\A2AExample\\PrimeAgent\\PrimeAgent\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "PrimeAgent\\PrimeAgent\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\kruz7\\OneDrive\\Documents\\Code Repos\\MCKRUZ\\A2AExample\\PrimeAgent\\PrimeAgent\\Properties\\launchSettings.json",
+              "RelativeToolTip": "PrimeAgent\\PrimeAgent\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-14T18:37:58.129Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

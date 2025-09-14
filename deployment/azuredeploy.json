@@ -1,0 +1,247 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environment": {
+      "type": "string",
+      "defaultValue": "dev",
+      "allowedValues": ["dev", "test", "prod"],
+      "metadata": {
+        "description": "Environment designation"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources"
+      }
+    },
+    "appServicePlanSku": {
+      "type": "string",
+      "defaultValue": "B1",
+      "allowedValues": ["F1", "B1", "B2", "S1", "S2", "P1v2"],
+      "metadata": {
+        "description": "SKU for the App Service Plan"
+      }
+    },
+    "microsoftAppId": {
+      "type": "string",
+      "metadata": {
+        "description": "Microsoft App ID for bot authentication"
+      }
+    },
+    "microsoftAppPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Microsoft App Password for bot authentication"
+      }
+    },
+    "openAiApiKey": {
+      "type": "securestring",
+      "defaultValue": "",
+      "metadata": {
+        "description": "OpenAI API Key for Semantic Kernel integration"
+      }
+    }
+  },
+  "variables": {
+    "resourcePrefix": "[concat('a2a-', parameters('environment'))]",
+    "appServicePlanName": "[concat(variables('resourcePrefix'), '-asp')]",
+    "primeAgentAppName": "[concat(variables('resourcePrefix'), '-prime')]",
+    "secondaryAgentAppName": "[concat(variables('resourcePrefix'), '-secondary')]",
+    "appInsightsName": "[concat(variables('resourcePrefix'), '-ai')]",
+    "primeAgentBotName": "[concat(variables('resourcePrefix'), '-prime-bot')]",
+    "secondaryAgentBotName": "[concat(variables('resourcePrefix'), '-secondary-bot')]",
+    "workspaceName": "[concat(variables('resourcePrefix'), '-workspace')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2021-06-01",
+      "name": "[variables('workspaceName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "name": "PerGB2018"
+        },
+        "retentionInDays": 30
+      }
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "apiVersion": "2020-02-02",
+      "name": "[variables('appInsightsName')]",
+      "location": "[parameters('location')]",
+      "kind": "web",
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('workspaceName'))]"
+      ],
+      "properties": {
+        "Application_Type": "web",
+        "WorkspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', variables('workspaceName'))]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2021-02-01",
+      "name": "[variables('appServicePlanName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('appServicePlanSku')]"
+      },
+      "kind": "linux",
+      "properties": {
+        "reserved": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2021-02-01",
+      "name": "[variables('primeAgentAppName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
+      ],
+      "kind": "app,linux",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "siteConfig": {
+          "linuxFxVersion": "DOTNETCORE|8.0",
+          "alwaysOn": true,
+          "appSettings": [
+            {
+              "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+              "value": "[reference(resourceId('Microsoft.Insights/components', variables('appInsightsName'))).InstrumentationKey]"
+            },
+            {
+              "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+              "value": "[reference(resourceId('Microsoft.Insights/components', variables('appInsightsName'))).ConnectionString]"
+            },
+            {
+              "name": "MicrosoftAppId",
+              "value": "[parameters('microsoftAppId')]"
+            },
+            {
+              "name": "MicrosoftAppPassword",
+              "value": "[parameters('microsoftAppPassword')]"
+            },
+            {
+              "name": "SecondaryAgent:Url",
+              "value": "[concat('https://', variables('secondaryAgentAppName'), '.azurewebsites.net')]"
+            },
+            {
+              "name": "OpenAI:ApiKey",
+              "value": "[parameters('openAiApiKey')]"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2021-02-01",
+      "name": "[variables('secondaryAgentAppName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
+      ],
+      "kind": "app,linux",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "siteConfig": {
+          "linuxFxVersion": "DOTNETCORE|8.0",
+          "alwaysOn": true,
+          "appSettings": [
+            {
+              "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+              "value": "[reference(resourceId('Microsoft.Insights/components', variables('appInsightsName'))).InstrumentationKey]"
+            },
+            {
+              "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+              "value": "[reference(resourceId('Microsoft.Insights/components', variables('appInsightsName'))).ConnectionString]"
+            },
+            {
+              "name": "MicrosoftAppId",
+              "value": "[parameters('microsoftAppId')]"
+            },
+            {
+              "name": "MicrosoftAppPassword",
+              "value": "[parameters('microsoftAppPassword')]"
+            },
+            {
+              "name": "OpenAI:ApiKey",
+              "value": "[parameters('openAiApiKey')]"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.BotService/botServices",
+      "apiVersion": "2021-03-01",
+      "name": "[variables('primeAgentBotName')]",
+      "location": "global",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('primeAgentAppName'))]"
+      ],
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "azurebot",
+      "properties": {
+        "displayName": "Prime Agent",
+        "description": "Agent-to-Agent demonstration - Prime Agent",
+        "endpoint": "[concat('https://', variables('primeAgentAppName'), '.azurewebsites.net/api/messages')]",
+        "msaAppId": "[parameters('microsoftAppId')]",
+        "developerAppInsightKey": "[reference(resourceId('Microsoft.Insights/components', variables('appInsightsName'))).InstrumentationKey]",
+        "developerAppInsightsApiKey": "",
+        "luisAppIds": [],
+        "luisKey": ""
+      }
+    },
+    {
+      "type": "Microsoft.BotService/botServices",
+      "apiVersion": "2021-03-01",
+      "name": "[variables('secondaryAgentBotName')]",
+      "location": "global",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('secondaryAgentAppName'))]"
+      ],
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "azurebot",
+      "properties": {
+        "displayName": "Secondary Agent",
+        "description": "Agent-to-Agent demonstration - Secondary Agent",
+        "endpoint": "[concat('https://', variables('secondaryAgentAppName'), '.azurewebsites.net/api/messages')]",
+        "msaAppId": "[parameters('microsoftAppId')]",
+        "developerAppInsightKey": "[reference(resourceId('Microsoft.Insights/components', variables('appInsightsName'))).InstrumentationKey]",
+        "developerAppInsightsApiKey": "",
+        "luisAppIds": [],
+        "luisKey": ""
+      }
+    }
+  ],
+  "outputs": {
+    "primeAgentUrl": {
+      "type": "string",
+      "value": "[concat('https://', variables('primeAgentAppName'), '.azurewebsites.net')]"
+    },
+    "secondaryAgentUrl": {
+      "type": "string",
+      "value": "[concat('https://', variables('secondaryAgentAppName'), '.azurewebsites.net')]"
+    },
+    "primeAgentBotName": {
+      "type": "string",
+      "value": "[variables('primeAgentBotName')]"
+    },
+    "secondaryAgentBotName": {
+      "type": "string",
+      "value": "[variables('secondaryAgentBotName')]"
+    }
+  }
+}

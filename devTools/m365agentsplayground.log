@@ -1,0 +1,67 @@
+debug Telemetry: agents-playground-cli/cliStart {"cleanProperties":{"isExec":"false","argv":"<REDACTED: user-file-path>,<REDACTED: user-file-path>,-e,http://localhost:3978/api/messages"}}
+
+warn Port 56150 is already in use. Finding an available port...
+log Listening on 60159
+log Microsoft 365 Agents Playground is being launched for you to debug the app: http://localhost:60159
+debug started web socket client
+debug started web socket client
+log Waiting for connection of endpoint: http://localhost:3978/api/messages
+log waiting for 1 resources: http://localhost:3978/api/messages
+log wait-on(102628) Timed out waiting for: http://localhost:3978/api/messages; exiting with error
+debug Telemetry: agents-playground-server/error {"cleanProperties":{"stack":"\"Error: Timed out waiting for: http://localhost:3978/api/messages\\n    at <REDACTED: user-file-path>:2:1466454\\n    at doInnerSub (<REDACTED: user-file-path>:2:2692075)\\n    at outerNext (<REDACTED: user-file-path>:2:2691927)\\n    at OperatorSubscriber._this._next (<REDACTED: user-file-path>:2:2816012)\\n    at Subscriber.next (<REDACTED: user-file-path>:5:994182)\\n    at AsyncAction.<anonymous> (<REDACTED: user-file-path>:5:1067533)\\n    at AsyncAction._execute (<REDACTED: user-file-path>:2:383674)\\n    at AsyncAction.execute (<REDACTED: user-file-path>:2:383447)\\n    at AsyncScheduler.flush (<REDACTED: user-file-path>:5:240782)\\n    at listOnTimeout (node:internal/timers:588:17)\"","message":"\"Timed out waiting for: http://localhost:3978/api/messages\""}}
+
+log Events recording disabled.
+debug Telemetry: agents-playground-server/eventsRecording {"cleanProperties":{"enabled":"false"}}
+
+debug Telemetry: agents-playground-server/getConfig {"cleanProperties":{"internalConfig":"{\"locale\":\"en-US\",\"localTimezone\":\"America/New_York\",\"channelId\":\"msteams\",\"debugConfig\":{\"eventsRecordingEnabled\":false}}"}}
+
+debug Telemetry: agents-playground-server/error {"cleanProperties":{"stack":"\"Error\\n    at exports.UserBotError (<REDACTED: user-file-path>:2:1233494)\\n    at InstallationUserBotAccessor.handleAxiosError (<REDACTED: user-file-path>:2:2205544)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async InstallationUserBotAccessor.sendActivity (<REDACTED: user-file-path>:2:2204806)\\n    at async InstallationUserBotAccessor.sendInstallationUpdateActivity (<REDACTED: user-file-path>:2:2141952)\"","message":"\"\"","code":"\"UserBotError\""}}
+
+log InternalServiceError
+    at exports.UserBotError (C:\Users\kruz7\AppData\Roaming\npm\node_modules\@microsoft\m365agentsplayground\dist\index.js:2:1233494)
+    at InstallationUserBotAccessor.handleAxiosError (C:\Users\kruz7\AppData\Roaming\npm\node_modules\@microsoft\m365agentsplayground\dist\index.js:2:2205544)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async InstallationUserBotAccessor.sendActivity (C:\Users\kruz7\AppData\Roaming\npm\node_modules\@microsoft\m365agentsplayground\dist\index.js:2:2204806)
+    at async InstallationUserBotAccessor.sendInstallationUpdateActivity (C:\Users\kruz7\AppData\Roaming\npm\node_modules\@microsoft\m365agentsplayground\dist\index.js:2:2141952) {
+  code: 'UserBotError',
+  innerHttpError: undefined
+}
+debug Telemetry: agents-playground-server/error {"cleanProperties":{"stack":"\"Error\\n    at exports.UserBotError (<REDACTED: user-file-path>:2:1233494)\\n    at ConversationUpdateUserBotAccessor.handleAxiosError (<REDACTED: user-file-path>:2:2205544)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async ConversationUpdateUserBotAccessor.sendActivity (<REDACTED: user-file-path>:2:2204806)\\n    at async ConversationUpdateUserBotAccessor.sendInstallationMemberAddedActivity (<REDACTED: user-file-path>:5:325509)\"","message":"\"\"","code":"\"UserBotError\""}}
+
+log InternalServiceError
+    at exports.UserBotError (C:\Users\kruz7\AppData\Roaming\npm\node_modules\@microsoft\m365agentsplayground\dist\index.js:2:1233494)
+    at ConversationUpdateUserBotAccessor.handleAxiosError (C:\Users\kruz7\AppData\Roaming\npm\node_modules\@microsoft\m365agentsplayground\dist\index.js:2:2205544)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConversationUpdateUserBotAccessor.sendActivity (C:\Users\kruz7\AppData\Roaming\npm\node_modules\@microsoft\m365agentsplayground\dist\index.js:2:2204806)
+    at async ConversationUpdateUserBotAccessor.sendInstallationMemberAddedActivity (C:\Users\kruz7\AppData\Roaming\npm\node_modules\@microsoft\m365agentsplayground\dist\index.js:5:325509) {
+  code: 'UserBotError',
+  innerHttpError: undefined
+}
+debug stopping web socket client
+debug stopping web socket client
+debug started web socket client
+debug started web socket client
+log Waiting for connection of endpoint: http://localhost:3978/api/messages
+log waiting for 1 resources: http://localhost:3978/api/messages
+log wait-on(102628) complete
+log Events recording disabled.
+debug Telemetry: agents-playground-server/eventsRecording {"cleanProperties":{"enabled":"false"}}
+
+debug Telemetry: agents-playground-server/getConfig {"cleanProperties":{"internalConfig":"{\"locale\":\"en-US\",\"localTimezone\":\"America/New_York\",\"channelId\":\"msteams\",\"debugConfig\":{\"eventsRecordingEnabled\":false}}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"installationUpdate","conversationId":"440fe842-754e-4408-a58c-978456843a91","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"conversationUpdate","conversationId":"440fe842-754e-4408-a58c-978456843a91","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"message","conversationId":"440fe842-754e-4408-a58c-978456843a91","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"message","conversationId":"440fe842-754e-4408-a58c-978456843a91","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"message","conversationId":"440fe842-754e-4408-a58c-978456843a91","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"message","conversationId":"440fe842-754e-4408-a58c-978456843a91","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug Telemetry: agents-playground-server/sendActivity {"cleanProperties":{"activityType":"message","conversationId":"440fe842-754e-4408-a58c-978456843a91","headers":"{\"x-ms-agents-playground\":\"true\"}"}}
+
+debug stopping web socket client
+debug stopping web socket client

@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(dotnet new:*)",
+      "Bash(mkdir:*)",
+      "Bash(dotnet sln add:*)",
+      "Bash(chmod:*)",
+      "Bash(dotnet build:*)",
+      "Bash(timeout:*)",
+      "Bash(dotnet clean:*)",
+      "WebSearch",
+      "Bash(powershell.exe:*)",
+      "Bash(dotnet run:*)",
+      "Bash(agentsplayground:*)",
+      "Bash(winget install:*)",
+      "Bash(find:*)",
+      "Bash(npm:*)",
+      "Bash(node:*)",
+      "Bash(code:*)",
+      "Bash(dir:*)",
+      "WebFetch(domain:aka.ms)",
+      "Bash(move \".m365agentsplayground.yml\" \".m365agentsplayground.yml.backup\")",
+      "Bash(taskkill:*)",
+      "Bash(curl:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

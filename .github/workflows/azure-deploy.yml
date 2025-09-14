@@ -1,0 +1,82 @@
+name: Build and Deploy A2AExample
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build solution
+      run: dotnet build --no-restore --configuration Release
+
+    - name: Run tests
+      run: dotnet test --no-build --configuration Release --verbosity normal
+
+    - name: Publish PrimeAgent
+      run: dotnet publish PrimeAgent/PrimeAgent/PrimeAgent.csproj --no-restore --configuration Release --output ./publish/prime
+
+    - name: Publish SecondaryAgent  
+      run: dotnet publish SecondaryAgent/SecondaryAgent/SecondaryAgent.csproj --no-restore --configuration Release --output ./publish/secondary
+
+    - name: Upload PrimeAgent artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: prime-agent
+        path: ./publish/prime
+
+    - name: Upload SecondaryAgent artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: secondary-agent
+        path: ./publish/secondary
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    environment: production
+
+    steps:
+    - name: Download PrimeAgent artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: prime-agent
+        path: ./prime
+
+    - name: Download SecondaryAgent artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: secondary-agent
+        path: ./secondary
+
+    - name: Login to Azure
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy PrimeAgent to Azure Web App
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: ${{ vars.PRIME_AGENT_APP_NAME }}
+        package: ./prime
+
+    - name: Deploy SecondaryAgent to Azure Web App
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: ${{ vars.SECONDARY_AGENT_APP_NAME }}
+        package: ./secondary

@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug in Microsoft 365 Agents Playground",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/@microsoft/m365agentsplayground/lib/src/index.js",
+      "args": [
+        "-e", "http://localhost:3978/api/messages"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "playground"
+      },
+      "preLaunchTask": "Start Agents"
+    }
+  ]
+}

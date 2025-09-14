@@ -1,0 +1,20 @@
+{
+  "name": "a2aexample",
+  "version": "1.0.0",
+  "description": "Agent-to-Agent Communication Demo for Microsoft 365 Agent Playground",
+  "scripts": {
+    "dev:playground": "concurrently \"npm run start:agents\" \"npm run playground\"",
+    "start:agents": "powershell.exe -ExecutionPolicy Bypass -File start-agents.ps1",
+    "playground": "m365agentsplayground -e http://localhost:3978/api/messages",
+    "build": "dotnet build --configuration Release"
+  },
+  "dependencies": {
+    "@microsoft/m365agentsplayground": "^0.2.18"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
